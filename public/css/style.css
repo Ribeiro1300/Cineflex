@@ -1,0 +1,19 @@
+/* --ALL--- */
+* {
+  font-family: "Roboto", sans-serif;
+}
+.top {
+  display: flex;
+  justify-content: center;
+}
+
+/* --TOP--- */
+.top {
+  font-weight: 400;
+  width: 100%;
+  height: 60px;
+  background-color: #c3cfd9;
+  align-items: center;
+  font-size: 34px;
+  color: #e8833a;
+}
