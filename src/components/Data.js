@@ -1,4 +1,4 @@
-[
+const movies = [
   {
     id: 1,
     title: "Zack Snyder Justice League",
@@ -178,3 +178,4 @@
     releaseDate: "2020-06-30T00:00:00.000Z",
   },
 ];
+export { movies };

@@ -2,9 +2,21 @@
 * {
   font-family: "Roboto", sans-serif;
 }
-.top {
+.top,
+.movies,
+.movie,
+.search {
   display: flex;
   justify-content: center;
+}
+h2 {
+  font-size: 25px;
+  text-align: center;
+  margin: 30px;
+  color: #293845;
+}
+input {
+  text-align: center;
 }
 
 /* --TOP--- */
@@ -16,4 +28,26 @@
   align-items: center;
   font-size: 34px;
   color: #e8833a;
+}
+
+.search {
+  flex-direction: column;
+  align-items: center;
+}
+.search input {
+  width: 70%;
+}
+.movies {
+  flex-wrap: wrap;
+}
+.movie {
+  border-radius: 10px;
+  width: 160px;
+  margin: 5px;
+  box-shadow: 5px 10px 18px #888888;
+
+  padding: 10px;
+}
+.movie img {
+  width: 100%;
 }
