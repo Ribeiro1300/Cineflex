@@ -5,7 +5,10 @@
 .top,
 .movies,
 .movie,
-.search {
+.search,
+.footer,
+.footerImg,
+.footerInfo {
   display: flex;
   justify-content: center;
 }
@@ -29,6 +32,7 @@ input {
   font-size: 34px;
   color: #e8833a;
 }
+/* --HOME--- */
 
 .search {
   flex-direction: column;
@@ -50,4 +54,27 @@ input {
 }
 .movie img {
   width: 100%;
+}
+/* --SESSIONS--- */
+
+/* --FOOTER--- */
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  background-color: #dfe6ed;
+  justify-content: flex-start;
+}
+.footerImg {
+  padding: 10px;
+  background-color: white;
+}
+.footer img {
+  width: 60px;
+}
+.footerImg,
+.footerInfo {
+  margin: 10px;
+  align-items: center;
+  font-size: 20px;
 }

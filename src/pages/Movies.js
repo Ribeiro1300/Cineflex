@@ -1,22 +1,26 @@
 import { movies } from "../components/Data";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 export default function Movies() {
-  // const promisse = axios.get(
-  //   "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies"
-  // );
-  // promisse.then((res) => {
-  //   console.log(res);
+  // const movies;
+  // useEffect(() => {
+  //   const promisse = axios.get(
+  //     "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies"
+  //   );
+  //   promisse.then((res) => {
+  //     movies = res.data;
+  //     console.log(res.data);
+  //   });
   // });
+
   const [filter, setFilter] = React.useState("");
   const newMovies = movies.filter((info) =>
     info.title.toUpperCase().includes(filter.toUpperCase())
   );
   function search(value) {
     setFilter(value.target.value);
-    console.log(value.target.value);
   }
   return (
     <>
