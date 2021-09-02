@@ -579,5 +579,10 @@ const seats = {
     },
   ],
 };
-
-export { movies, sessions, seats };
+const order = {
+  movie: "",
+  session: "",
+  seats: "",
+  buyers: "",
+};
+export { movies, sessions, seats, order };

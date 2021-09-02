@@ -10,7 +10,10 @@
 .footerImg,
 .footerInfo,
 .sessionsTimes,
-.time {
+.time,
+.seats,
+.allSeats,
+.seatsIds {
   display: flex;
   justify-content: center;
 }
@@ -91,6 +94,26 @@ ion-icon {
   margin: 20px 20px 20px 0px;
   padding: 10px;
   background-color: #e8833a;
+}
+
+/* --SEATS--- */
+.seats {
+  flex-direction: column;
+  align-items: center;
+}
+.allSeats {
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.seatsIds {
+  align-items: center;
+  background-color: #c3cfd9;
+  margin: 10px 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 100px;
+  font-size: 15px;
 }
 /* --FOOTER--- */
 .footer {
