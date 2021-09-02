@@ -8,22 +8,35 @@
 .search,
 .footer,
 .footerImg,
-.footerInfo {
+.footerInfo,
+.sessionsTimes,
+.time {
   display: flex;
   justify-content: center;
 }
 h2 {
   font-size: 25px;
   text-align: center;
-  margin: 30px;
+  margin: 20px;
   color: #293845;
 }
 input {
   text-align: center;
 }
+.seats,
+.sessions,
+.sucess {
+  margin-top: 90px;
+  margin-bottom: 120px;
+}
+.search {
+  margin-top: 90px;
+}
 
 /* --TOP--- */
 .top {
+  position: fixed;
+  top: 0px;
   font-weight: 400;
   width: 100%;
   height: 60px;
@@ -56,10 +69,25 @@ input {
   width: 100%;
 }
 /* --SESSIONS--- */
-
+.dates {
+  margin: 20px;
+  font-size: 15px;
+}
+.sessionsTimes {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.time {
+  width: 70px;
+  color: white;
+  margin: 20px 20px 20px 0px;
+  padding: 10px;
+  background-color: #e8833a;
+}
 /* --FOOTER--- */
 .footer {
   width: 100%;
+  height: 120px;
   position: fixed;
   bottom: 0px;
   background-color: #dfe6ed;

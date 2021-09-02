@@ -8,11 +8,11 @@ export default function Sessions() {
     <div className="sessions">
       <h2>Selecione o horário</h2>
       {sessions.days.map((info) => (
-        <div>
+        <div className="dates">
           <h3>{info.weekday + " - " + info.date}</h3>
-          <div>
+          <div className="sessionsTimes">
             {info.showtimes.map((time) => (
-              <div>{time.name}</div>
+              <div className="time">{time.name}</div>
             ))}
           </div>
         </div>
