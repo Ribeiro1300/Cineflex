@@ -34,7 +34,7 @@ export default function Movies() {
       </div>
       <div className="movies">
         {newMovies.map((info) => (
-          <Link to>
+          <Link to={"/sessions/" + info.id}>
             <div className="movie">
               <img src={info.posterURL}></img>
             </div>

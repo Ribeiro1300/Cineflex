@@ -12,13 +12,13 @@ export default function App() {
         <Route path="/" exact>
           <Movies />
         </Route>
-        <Route path="/sessions" exact>
+        <Route path="/sessions">
           <Sessions />
         </Route>
-        <Route path="/seats" exact>
+        <Route path="/seats">
           <Seats />
         </Route>
-        <Route path="/success" exact>
+        <Route path="/success">
           <Success />
         </Route>
       </Switch>
