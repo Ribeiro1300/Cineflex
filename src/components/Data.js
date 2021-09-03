@@ -370,7 +370,7 @@ const seats = {
     {
       id: 9,
       name: "9",
-      isAvailable: true,
+      isAvailable: false,
     },
     {
       id: 10,
@@ -580,9 +580,12 @@ const seats = {
   ],
 };
 const order = {
-  movie: "",
-  session: "",
-  seats: "",
-  buyers: "",
+  movie: "teste",
+  session: "23/06/2021 15:00",
+  seats: [
+    { id: 2, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
+    { id: 3, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
+    { id: 20, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
+  ],
 };
 export { movies, sessions, seats, order };

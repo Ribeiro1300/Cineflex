@@ -12,7 +12,7 @@ export default function App() {
         <Route path="/" exact>
           <Movies />
         </Route>
-        <Route path="/sessions">
+        <Route path="/sessions :idMovie">
           <Sessions />
         </Route>
         <Route path="/seats">

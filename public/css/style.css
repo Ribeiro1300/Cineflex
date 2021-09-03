@@ -13,7 +13,8 @@
 .time,
 .seats,
 .allSeats,
-.seatsIds {
+.seatsIds,
+.example {
   display: flex;
   justify-content: center;
 }
@@ -35,9 +36,7 @@ input {
 .search {
   margin-top: 90px;
 }
-a {
-  text-decoration: none;
-}
+
 ion-icon {
   color: #e8833a;
   font-size: 30px;
@@ -63,7 +62,7 @@ ion-icon {
   align-items: center;
 }
 .search input {
-  width: 70%;
+  width: 60%;
 }
 .movies {
   flex-wrap: wrap;
@@ -107,13 +106,33 @@ ion-icon {
   flex-wrap: wrap;
 }
 .seatsIds {
+  justify-content: center;
   align-items: center;
-  background-color: #c3cfd9;
   margin: 10px 4px;
   width: 28px;
   height: 28px;
   border-radius: 100px;
-  font-size: 15px;
+  font-size: 17px;
+}
+.example {
+  width: 100%;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.example div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.selected {
+  background-color: #8dd7cf;
+}
+.available {
+  background-color: #c3cfd9;
+}
+.unavailable {
+  background-color: #fbe192;
 }
 /* --FOOTER--- */
 .footer {
@@ -136,4 +155,7 @@ ion-icon {
   margin: 10px;
   align-items: center;
   font-size: 20px;
+}
+a {
+  text-decoration: none;
 }

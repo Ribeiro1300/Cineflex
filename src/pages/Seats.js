@@ -7,28 +7,39 @@ import { useParams, Link, useHistory } from "react-router-dom";
 export default function Seats() {
   const { IdSession } = useParams();
   const history = useHistory();
+  let selectedSeats = [];
 
-  function RenderSeats() {
-    const [back, setBack] = React.useState("");
-    function available(value) {
-      if (value.isAvailable) setBack("#c3cfd9");
-      else setBack("#FBE192");
+  function RenderSeats(info) {
+    const [back, setBack] = React.useState("#C3CFD9");
+    function selectSeat() {
+      selectedSeats.push(info.id);
+      console.log(selectedSeats);
+      setBack("#8dd7cf");
+    }
+    function deselect() {
+      selectedSeats.pop(info.id);
+      setBack("#C3CFD9");
+      console.log(selectedSeats);
+    }
+    function select(value) {
+      if (value) {
+        back === "#C3CFD9" ? selectSeat() : deselect();
+      } else return;
+    }
 
-      return { background: back };
-    }
-    function select() {
-      console.log("oi");
-    }
     return (
-      <div className="allSeats">
-        {seats.seats.map((info) => (
-          <div className="seatsIds" style={available(info)} onClick={select}>
-            {info.id}
-          </div>
-        ))}
+      <div
+        className="seatsIds"
+        style={{
+          backgroundColor: info.isAvailable ? back : "#FBE192",
+        }}
+        onClick={() => select(info.isAvailable)}
+      >
+        {info.id}
       </div>
     );
   }
+  console.log(selectedSeats);
   return (
     <div className="seats">
       <div className="title">
@@ -38,7 +49,23 @@ export default function Seats() {
         ></ion-icon>
         <h2>Selecione o(s) assento(s)</h2>
       </div>
-      {RenderSeats()}
+      <div className="allSeats">
+        {seats.seats.map((info) => RenderSeats(info))}
+      </div>
+      <div className="example">
+        <div>
+          <div className="seatsIds selected"></div>
+          <p>Selecionado</p>
+        </div>
+        <div>
+          <div className="seatsIds available"></div>
+          <p>Disponível</p>
+        </div>
+        <div>
+          <div className="seatsIds unavailable"></div>
+          <p>Indisponível</p>
+        </div>
+      </div>
 
       <Footer
         title={seats.movie.title}
