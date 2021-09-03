@@ -4,7 +4,7 @@ import React from "react";
 import axios from "axios";
 import { useParams, Link, useHistory } from "react-router-dom";
 
-export default function Seats() {
+export default function Seats(props) {
   const { IdSession } = useParams();
   const history = useHistory();
   let selectedSeats = [];
@@ -40,6 +40,11 @@ export default function Seats() {
     );
   }
   console.log(selectedSeats);
+  props.setOrder((value) => {
+    value.session = seats.day.date + " - " + seats.name;
+    return value;
+  });
+
   return (
     <div className="seats">
       <div className="title">
@@ -66,7 +71,9 @@ export default function Seats() {
           <p>Indisponível</p>
         </div>
       </div>
-
+      <Link to="/success">
+        <div>TESTE</div>
+      </Link>
       <Footer
         title={seats.movie.title}
         img={seats.movie.posterURL}

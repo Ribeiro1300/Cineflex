@@ -579,7 +579,7 @@ const seats = {
     },
   ],
 };
-const order = {
+let order = {
   movie: "teste",
   session: "23/06/2021 15:00",
   seats: [

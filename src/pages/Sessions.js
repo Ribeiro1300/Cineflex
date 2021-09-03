@@ -4,9 +4,13 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import { useParams, Link, useHistory } from "react-router-dom";
 
-export default function Sessions() {
+export default function Sessions(props) {
   const { IdMovie } = useParams();
   const history = useHistory();
+  props.setOrder((value) => {
+    value.movie = sessions.title;
+    return value;
+  });
   return (
     <div className="sessions">
       <div className="title">
