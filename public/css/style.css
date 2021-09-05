@@ -65,6 +65,7 @@ ion-icon {
   width: 60%;
 }
 .movies {
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 .movie {
