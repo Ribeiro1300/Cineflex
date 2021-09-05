@@ -581,11 +581,9 @@ const seats = {
 };
 let order = {
   movie: "teste",
-  session: "23/06/2021 15:00",
-  seats: [
-    { id: 2, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
-    { id: 3, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
-    { id: 20, buyer: "Jhonatan Ribeiro", cpf: "123.456.789-75" },
-  ],
+  session: "teste",
+  seats: [{ id: 2, buyer: "teste", cpf: "123" }],
 };
-export { movies, sessions, seats, order };
+const selectedSeats = [];
+
+export { movies, sessions, seats, order, selectedSeats };

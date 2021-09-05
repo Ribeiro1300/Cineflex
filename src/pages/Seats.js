@@ -1,28 +1,37 @@
 import Footer from "../components/Footer";
-import { seats } from "../components/Data";
-import React from "react";
+import { selectedSeats, order } from "../components/Data";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link, useHistory } from "react-router-dom";
 
-export default function Seats(props) {
-  const { IdSession } = useParams();
+export default function Seats() {
+  const { idSession } = useParams();
   const history = useHistory();
-  let selectedSeats = [];
+  const [seats, setSeats] = useState("");
+  useEffect(() => {
+    const promisse = axios.get(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${idSession}/seats`
+    );
+    promisse.then((res) => {
+      setSeats(res.data);
+    });
+  }, []);
 
+  if (seats.length === 0) {
+    return <img src="./Youtube_loading_symbol_1_(wobbly).gif" />;
+  }
   function RenderSeats(info) {
-    const [back, setBack] = React.useState("#C3CFD9");
+    const [back, setBack] = useState("#C3CFD9");
     function selectSeat() {
       selectedSeats.push(info.id);
-      console.log(selectedSeats);
       setBack("#8dd7cf");
     }
     function deselect() {
-      selectedSeats.pop(info.id);
+      selectedSeats.splice(selectedSeats.indexOf(info.id), 1);
       setBack("#C3CFD9");
-      console.log(selectedSeats);
     }
-    function select(value) {
-      if (value) {
+    function select() {
+      if (info.isAvailable) {
         back === "#C3CFD9" ? selectSeat() : deselect();
       } else return;
     }
@@ -33,17 +42,13 @@ export default function Seats(props) {
         style={{
           backgroundColor: info.isAvailable ? back : "#FBE192",
         }}
-        onClick={() => select(info.isAvailable)}
+        onClick={select}
       >
-        {info.id}
+        {info.name}
       </div>
     );
   }
-  console.log(selectedSeats);
-  props.setOrder((value) => {
-    value.session = seats.day.date + " - " + seats.name;
-    return value;
-  });
+  order.session = seats.day.date + " - " + seats.name;
 
   return (
     <div className="seats">
@@ -71,8 +76,16 @@ export default function Seats(props) {
           <p>Indisponível</p>
         </div>
       </div>
+      <div className="buyers">
+        <div className="buyersInfo">
+          <p>Nome do comprador do assento:</p>
+          <input placeholder="Digite seu nome..."></input>
+          <p>CPF do comprador do assento:</p>
+          <input placeholder="Digite seu CPF..."></input>
+        </div>
+      </div>
       <Link to="/success">
-        <div>TESTE</div>
+        <div>Reservar assento(s)</div>
       </Link>
       <Footer
         title={seats.movie.title}

@@ -1,16 +1,26 @@
-import React from "react";
-import { sessions } from "../components/Data";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import { useParams, Link, useHistory } from "react-router-dom";
+import { order } from "../components/Data";
 
-export default function Sessions(props) {
-  const { IdMovie } = useParams();
+export default function Sessions() {
+  const { idMovie } = useParams();
   const history = useHistory();
-  props.setOrder((value) => {
-    value.movie = sessions.title;
-    return value;
-  });
+  const [sessions, setSessions] = useState([]);
+  order.movie = sessions.title;
+  useEffect(() => {
+    const promisse = axios.get(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${idMovie}/showtimes`
+    );
+    promisse.then((res) => {
+      setSessions(res.data);
+    });
+  }, []);
+
+  if (sessions.length === 0) {
+    return <img src="./Youtube_loading_symbol_1_(wobbly).gif" />;
+  }
   return (
     <div className="sessions">
       <div className="title">
