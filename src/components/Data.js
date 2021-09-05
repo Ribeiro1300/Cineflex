@@ -580,10 +580,18 @@ const seats = {
   ],
 };
 let order = {
-  movie: "teste",
-  session: "teste",
-  seats: [{ id: 2, buyer: "teste", cpf: "123" }],
+  movie: "",
+  session: "",
+  seats: [],
 };
 const selectedSeats = [];
+let ids;
+let post = {
+  ids: selectedSeats.map((info) => {
+    ids += info.id;
+  }),
+  name: order.seats.buyer,
+  cpf: order.seats.cpf,
+};
 
-export { movies, sessions, seats, order, selectedSeats };
+export { movies, sessions, seats, order, selectedSeats, post };

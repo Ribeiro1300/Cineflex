@@ -22,12 +22,10 @@ export default function Success() {
         <p>Assento {info.id}</p>
       ))}
       <h2>Comprador</h2>
-      {order.seats.map((info) => (
-        <div>
-          <p>Nome:{info.buyer}</p>
-          <p>CPF:{info.cpf}</p>
-        </div>
-      ))}
+      <div>
+        <p>Nome:{order.seats.buyer}</p>
+        <p>CPF:{order.seats.cpf}</p>
+      </div>
       <Link to="/">
         <div className="toHome">
           <p>Voltar pra Home</p>

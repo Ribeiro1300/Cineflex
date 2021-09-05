@@ -1,5 +1,5 @@
 import Footer from "../components/Footer";
-import { order } from "../components/Data";
+import { order, selectedSeats, post } from "../components/Data";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link, useHistory } from "react-router-dom";
@@ -8,6 +8,9 @@ export default function Seats() {
   const { idSession } = useParams();
   const history = useHistory();
   const [seats, setSeats] = useState([]);
+  const [finalOrder, setFinalOrder] = useState("");
+  let buyerName;
+  let buyerCPF;
   useEffect(() => {
     const promisse = axios.get(
       `https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${idSession}/seats`
@@ -25,15 +28,16 @@ export default function Seats() {
     const [back, setBack] = useState("#C3CFD9");
 
     function selectSeat() {
+      selectedSeats.push(props.info);
       setBack("#8dd7cf");
     }
     function deselect() {
+      selectedSeats.splice(selectedSeats.indexOf(props.info), 1);
       setBack("#C3CFD9");
     }
     function select() {
       back === "#C3CFD9" ? selectSeat() : deselect();
     }
-
     return (
       <div
         className="seatsIds"
@@ -44,6 +48,22 @@ export default function Seats() {
       >
         {props.info.name}
       </div>
+    );
+  }
+  function sendInfo() {
+    let finalSeats = [];
+
+    selectedSeats.map((info) => {
+      finalSeats.push({ id: info.name, buyer: buyerName, cpf: buyerCPF });
+    });
+    order.seats = finalSeats;
+    console.log(buyerCPF, buyerName, order.seats);
+    postReq();
+  }
+  function postReq(obj) {
+    const promisse = axios.post(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many`,
+      post
     );
   }
   order.session = seats.day.date + " - " + seats.name;
@@ -79,13 +99,19 @@ export default function Seats() {
       <div className="buyers">
         <div className="buyersInfo">
           <p>Nome do comprador do assento:</p>
-          <input placeholder="Digite seu nome..."></input>
+          <input
+            placeholder="Digite seu nome..."
+            onChange={(event) => (buyerName = event.target.value)}
+          ></input>
           <p>CPF do comprador do assento:</p>
-          <input placeholder="Digite seu CPF..."></input>
+          <input
+            placeholder="Digite seu CPF..."
+            onChange={(event) => (buyerCPF = event.target.value)}
+          ></input>
         </div>
       </div>
-      <Link to="/success">
-        <div>Reservar assento(s)</div>
+      <Link to={"/success/" + buyerName + "/" + buyerCPF}>
+        <div onClick={sendInfo}>Reservar assento(s)</div>
       </Link>
       <Footer
         title={seats.movie.title}
