@@ -7,7 +7,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 export default function Seats() {
   const { idSession } = useParams();
   const history = useHistory();
-  const [seats, setSeats] = useState("");
+  const [seats, setSeats] = useState([]);
   useEffect(() => {
     const promisse = axios.get(
       `https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${idSession}/seats`
@@ -20,36 +20,35 @@ export default function Seats() {
   if (seats.length === 0) {
     return <img src="./Youtube_loading_symbol_1_(wobbly).gif" />;
   }
-  function RenderSeats(info) {
+
+  function RenderSeats(props) {
     const [back, setBack] = useState("#C3CFD9");
+
     function selectSeat() {
-      selectedSeats.push(info.id);
+      selectedSeats.push(props.info.id);
       setBack("#8dd7cf");
     }
     function deselect() {
-      selectedSeats.splice(selectedSeats.indexOf(info.id), 1);
+      selectedSeats.splice(selectedSeats.indexOf(props.info.id), 1);
       setBack("#C3CFD9");
     }
     function select() {
-      if (info.isAvailable) {
-        back === "#C3CFD9" ? selectSeat() : deselect();
-      } else return;
+      back === "#C3CFD9" ? selectSeat() : deselect();
     }
 
     return (
       <div
         className="seatsIds"
         style={{
-          backgroundColor: info.isAvailable ? back : "#FBE192",
+          backgroundColor: props.info.isAvailable ? back : "#FBE192",
         }}
         onClick={select}
       >
-        {info.name}
+        {props.info.name}
       </div>
     );
   }
   order.session = seats.day.date + " - " + seats.name;
-
   return (
     <div className="seats">
       <div className="title">
@@ -60,7 +59,9 @@ export default function Seats() {
         <h2>Selecione o(s) assento(s)</h2>
       </div>
       <div className="allSeats">
-        {seats.seats.map((info) => RenderSeats(info))}
+        {seats.seats.map((info) => (
+          <RenderSeats info={info} />
+        ))}
       </div>
       <div className="example">
         <div>
