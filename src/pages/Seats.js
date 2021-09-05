@@ -1,5 +1,5 @@
 import Footer from "../components/Footer";
-import { selectedSeats, order } from "../components/Data";
+import { order } from "../components/Data";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link, useHistory } from "react-router-dom";
@@ -25,11 +25,9 @@ export default function Seats() {
     const [back, setBack] = useState("#C3CFD9");
 
     function selectSeat() {
-      selectedSeats.push(props.info.id);
       setBack("#8dd7cf");
     }
     function deselect() {
-      selectedSeats.splice(selectedSeats.indexOf(props.info.id), 1);
       setBack("#C3CFD9");
     }
     function select() {
@@ -49,6 +47,7 @@ export default function Seats() {
     );
   }
   order.session = seats.day.date + " - " + seats.name;
+
   return (
     <div className="seats">
       <div className="title">
